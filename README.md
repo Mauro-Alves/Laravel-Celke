@@ -27,6 +27,18 @@ Acessar o conteúdo padrão do Laravel
 http://127.0.0.1:8000
 ```
 
+Criar migração
+```
+php artisan make:migration create_name_Table
+```
+
+Executar migration
+```
+
+php artisan migrate
+```
+
+
 ## Sequencia para criar o projeto
 Criar o projeto com Laravel
 ```
@@ -58,3 +70,4 @@ Baixar as atualizações
 ```
 git pull
 ```
+
