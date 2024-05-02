@@ -8,4 +8,10 @@ Route::get('/', function () {
 });
 
 // Cursos
-Route::GET('/index-course', [CourseController::class, 'index']);
+Route::GET('/index-course', [CourseController::class, 'index'])->name('courses.index');
+Route::GET('/show-course', [CourseController::class, 'show'])->name('courses.show');
+Route::GET('/create-course', [CourseController::class, 'create'])->name('courses.create');
+Route::POST('/store-course', [CourseController::class, 'store'])->name('courses.store');
+Route::GET('/edit-course', [CourseController::class, 'edit'])->name('courses.edit');
+Route::PUT('/update-course', [CourseController::class, 'update'])->name('courses.update');
+Route::DELETE('/destroy-course', [CourseController::class, 'destroy'])->name('courses.destroy');

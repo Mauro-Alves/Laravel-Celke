@@ -71,3 +71,10 @@ Baixar as atualizações
 git pull
 ```
 
+Criar View
+```
+php artisan make:view nome
+```
+php artisan make:view courses/show
+```
+
