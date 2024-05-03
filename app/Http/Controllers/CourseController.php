@@ -10,15 +10,24 @@ class CourseController extends Controller
     //Listar os cursos
     public function index(){
 
+        // Recuperar os registros do banco de dados
+        // $courses = Course::where('id', 1000)->get();
+        //$courses = Course::paginate(10);
+        $courses = Course::orderBy('name', 'ASC')->get();
+
         // Carregar a VIEW
-        return  view('courses.index');
+        return  view('courses.index', ['courses' => $courses]);
     }
 
     //Visualizar o curso
-    public function show(){
+    public function show(Course $course){
+
+
+
+        //$course = Course::where('id', $request->course)->first();
 
         // Carregar a VIEW
-        return  view('courses.show');
+        return  view('courses.show',['course' => $course]);
     }
     
     //Carregar o formulário cadastrar novo curso
