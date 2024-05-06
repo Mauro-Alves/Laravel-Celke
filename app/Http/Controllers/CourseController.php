@@ -45,7 +45,8 @@ class CourseController extends Controller
 
         // dd($request->name);
         $course = Course::create([
-            'name' => $request->name
+            'name' => $request->name,
+            'price' => $request->price,
         ]);
 
         //Redirecionar o usuário, enviar a mensagem de sucesso
@@ -66,7 +67,8 @@ class CourseController extends Controller
         //Editar as informações do registro no banco de dados
 
         $course->update([
-            'name' => $request->name
+            'name' => $request->name,
+            'price' => $request->price,
         ]);
         
         // Rediecionar o usuário, enviar a mensagem de sucesso

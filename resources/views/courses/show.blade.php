@@ -27,6 +27,7 @@
 
     ID: {{ $course->id }} <br>
     Nome: {{ $course->name }} <br>
+    Preço: {{ 'R$ ' . number_format($course->price, 2, ',' , '.') }} <br>
     Cadastrado: {{ \Carbon\Carbon::parse($course->created_at)->tz('America/Sao_Paulo')->format('d/m/y H:i:s') }} <br>
     Editado: {{ \Carbon\Carbon::parse($course->updated_at)->tz('America/Sao_Paulo')->format('d/m/y H:i:s') }} <br>
 @endsection
