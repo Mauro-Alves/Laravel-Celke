@@ -55,7 +55,7 @@ class CourseController extends Controller
         ]);
 
         //Redirecionar o usuário, enviar a mensagem de sucesso
-        return redirect()->route('courses.show', ['course' => $course->id])->with('success', 'Curso cadastrado com sucesso!');
+        return redirect()->route('course.show', ['course' => $course->id])->with('success', 'Curso cadastrado com sucesso!');
     }
     
     //Carregar o formulário editar curso
@@ -81,7 +81,7 @@ class CourseController extends Controller
         ]);
         
         // Rediecionar o usuário, enviar a mensagem de sucesso
-        return redirect()->route('courses.show', ['course' => $course->id])->with('success', 'Curso editado com sucesso!');
+        return redirect()->route('course.show', ['course' => $course->id])->with('success', 'Curso editado com sucesso!');
     }
     
     //Excluir o curso do banco de dados
@@ -92,7 +92,7 @@ class CourseController extends Controller
         $course->delete();
 
         // Re4direcionar o usuário, enviar a mensagem de sucesso
-        return redirect()->route('courses.index')->with('success', 'Curso excluído mcom sucesso!');
+        return redirect()->route('course.index')->with('success', 'Curso excluído mcom sucesso!');
     }
     
 }

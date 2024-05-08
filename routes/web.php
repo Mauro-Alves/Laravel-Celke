@@ -19,3 +19,6 @@ Route::DELETE('/destroy-course/{course}', [CourseController::class, 'destroy'])-
 
 // Aulas
 Route::GET('/index-classe/{course}', [ClasseController::class, 'index'])->name('classe.index');
+Route::GET('/show-classe/{classe}', [ClasseController::class, 'show'])->name('classe.show');
+Route::GET('/create-classe/{course}', [ClasseController::class, 'create'])->name('classe.create');
+Route::POST('/store-classe', [ClasseController::class, 'store'])->name('classe.store');
