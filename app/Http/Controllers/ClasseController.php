@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ClasseRequest;
 use App\Models\Classe;
 use App\Models\Classes;
 use App\Models\Course;
@@ -28,14 +29,18 @@ class ClasseController extends Controller
     }
 
     // Cadastrar no banco de dados a nova aula
-    public function store(Request $request)
+    public function store(ClasseRequest $request)
     {
+        // Validar formulário
+
+        $request->validated();
+
         //Recuperar a última ordem da aula no curso
         $lastOrderClasse = Classe::where('course_id', $request->course_id)
             ->orderBy('order_classe', 'DESC')
             ->first();
 
-        // Cadastrar no banco de dados natabela aulas
+        // Cadastrar no banco de dados na tabela aulas
         Classe::create([
             "name" => $request->name,
             'description' => $request->description,
