@@ -8,6 +8,7 @@ use App\Models\Classe;
 use App\Models\Course;
 use Exception;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class ClasseController extends Controller
 {
@@ -20,6 +21,9 @@ class ClasseController extends Controller
             ->orderBy('order_classe')
             ->get();
 
+            // Salvar log
+            Log::info('Listar aulas.', ['course_id' => $course->id]);
+
         // Carregar a VIEW
         return view('classes.index', ['course' => $course, 'classes' => $classes]);
     }
@@ -27,6 +31,9 @@ class ClasseController extends Controller
     // Detalhes da aula
     public function show(Classe $classe)
     {
+        // Salvar log
+        Log::info('Visualizar a aula.', [ 'classe_id' => $classe->id]);
+
         // Carregar a VIEW
         return view('classes.show', ['classe' => $classe]);
     }
@@ -58,7 +65,7 @@ class ClasseController extends Controller
                 ->first();
 
             // Cadastrar no banco de dados na tabela aulas
-            Classe::create([
+            $classe = Classe::create([
                 "name" => $request->name,
                 'description' => $request->description,
                 'order_classe' => $lastOrderClasse ? $lastOrderClasse->order_classe + 1 : 1,
@@ -68,12 +75,18 @@ class ClasseController extends Controller
             // Operação concluída com êxito
             DB::commit();
 
+            // Salvar log
+            Log::info('Aula cadastrada.', [ 'classe_id' => $classe->id]);
+
             // Redirecionar o usuário, enviar a mensagem de sucesso
             return redirect()->route('classe.index', ['course' => $request->course_id])->with('success', 'Aula cadastrada com sucesso!');
         } catch (Exception $e) {
 
             // Operação não concluída com êxito
             DB::rollBack();
+
+            // Salvar log
+            Log::notice('Aula não cadastrada.', [ 'error' => $e->getMessage()]);
 
             //Redirecionar o usuário, enviar a mensagem de erro
             return redirect()->back()->with('error', 'Aula não cadastrada!');
@@ -106,12 +119,18 @@ class ClasseController extends Controller
             // Operação concluída com êxito
             DB::commit();
 
+            // Salvar log
+            Log::info('Aula editada.', [ 'classe_id' => $classe->id]);
+
             // Redirecionar o usuário, enviar a mensagem de sucesso
             return redirect()->route('classe.index', ['course' => $classe->course_id])->with('success', 'Aula editada com sucesso!');
         } catch (Exception $e) {
 
             // Operação não concluída com êxito
             DB::rollBack();
+
+            // Salvar log
+            Log::notice('Aula não editada.', [ 'error' => $e->getMessage()]);
 
             //Redirecionar o usuário, enviar a mensagem de erro
             return redirect()->back()->with('error', 'Aula não editada!');
@@ -124,11 +143,17 @@ class ClasseController extends Controller
             // Excluir o registro do banco de dados
             $classe->delete();
 
+            // Salvar log
+            Log::info('Aula apagada.', [ 'classe_id' => $classe->id]);
+
             //Redirecionar o usiário, enviar a mensagem de sucesso
             return redirect()->route('classe.index', ['course' => $classe->course_id])->with('success', 'Aula apagada com sucesso!');
         } catch (Exception $e) {
 
-            // Re4direcionar o usuário, enviar a mensagem de erro
+            // Salvar log
+            Log::notice('Aula não apagada.', [ 'error' => $e->getMessage()]);
+
+            // Redirecionar o usuário, enviar a mensagem de erro
             return redirect()->route('classe.index')->with('error', 'Aula não apagada!');
         }
     }
