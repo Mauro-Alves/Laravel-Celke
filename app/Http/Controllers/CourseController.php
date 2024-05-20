@@ -17,7 +17,10 @@ class CourseController extends Controller
         // Recuperar os registros do banco de dados
         // $courses = Course::where('id', 1000)->get();
         // $courses = Course::paginate(10);
-        $courses = Course::orderBy('name', 'ASC')->get();
+        $courses = Course::orderBy('name', 'ASC')
+        
+        ->get();
+
 
         // Salvar log
         Log::info('Listar cursos.');
@@ -155,7 +158,7 @@ class CourseController extends Controller
             Log::info('Curso apagado com sucesso!', ['course_id' => $course->id]);
 
             // Redirecionar o usuário, enviar a mensagem de sucesso
-            return redirect()->route('course.index')->with('success', 'Curso excluído mcom sucesso!');
+            return redirect()->route('course.index')->with('success', 'Curso excluído com sucesso!');
         } catch (Exception $e) {
 
             // Salvar log
