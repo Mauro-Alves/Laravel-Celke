@@ -1,31 +1,71 @@
 @extends('layouts.admin')
 
 @section('content')
-    <h2>Editar o Curso</h2>
+    <div class="container-fluid px-4">
 
-    <a href="{{ route('course.index') }}">
-        <button type="submit">Listar</button></a> <br>
-    </a> <br>
+        <div class="mb-1 hstack gap-2">
+            <h2 class="mt-3">Curso</h2>
 
-    <a href="{{ route('course.show', ['course' => $course->id]) }}">
-        <button type="submit">Visualizar</button></a> <br>
-    </a> <br><br>
+            <ol class="breadcrumb mb-3 mt-3 ms-auto">
 
-    <x-alert />
+                <li class="breadcrumb-item">
+                    <a href="#" class="text-decoration-none">Dashboard</a>
+                </li>
 
-    <form action="{{ route('course.update', ['course' => $course->id]) }}" method="POST">
-        @csrf
-        @method('PUT')
+                <li class="breadcrumb-item">
+                    <a href="{{ route('course.index') }}" class="text-decoration-none">Cursos</a>
+                </li>
 
-        <label> Nome: </label>
-        <input type="text" name="name" id="name" value="{{ old('name', $course->name) }}" placeholder="Nome do curso"
-            required><br><br>
+                <li class="breadcrumb-item active">Curso</li>
 
-        <label> Preço: </label>
-        <input type="text" name="price" id="price" value="{{ old('price', $course->price) }}"
-            placeholder="Preço do curso: 2.47" required><br><br>
+            </ol>
 
-        <button type="submit">Salvar</button>
+        </div>
 
-    </form>
+        <div class="card mb-4">
+
+            <div class="card-header hstack gap-2">
+                <span>Editar</span>
+
+                <span class="ms-auto d-sm-flex flex-row">
+
+                    <a href="{{ route('course.index') }}" class="btn btn-info btn-sm me-1 mb-1 mb-sm-0">Listar</a>
+
+                    <a href="{{ route('course.show', ['course' => $course->id]) }}" class="btn btn-primary btn-sm me-1 mb-1 mb-sm-0">Visualizar</a>
+
+                </span>
+
+            </div>
+
+            <div class="card-body">
+
+                <x-alert />
+
+                <form class="row g-3" action="{{ route('course.update', ['course' => $course->id]) }}" method="POST">
+                    @csrf
+                    @method('PUT')
+
+                    <div class="col-12">
+                        <label for="name" class="form-label">Nome</label>
+                        <input type="text" name="name" class="form-control" id="name"
+                            placeholder="Nome do curso" value="{{ old('name', $course->name) }}" >
+                    </div>
+
+                    <div class="col-12">
+                        <label for="price" class="form-label">Preço</label>
+                        <input type="text" name="price" class="form-control" id="price"
+                            placeholder="Preço do Curso: 2.47" value="{{ old('price', $course->price) }}" >
+                    </div>
+
+                    <div class="col-12">
+                      <button type="submit" class="btn btn-warning btn-sm">Editar</button>
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
 @endsection
