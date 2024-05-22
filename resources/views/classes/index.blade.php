@@ -5,7 +5,7 @@
         <div class="mb-1 hstack gap-2">
             <h2 class="mt-3">Aula</h2>
 
-            <ol class="breadcrumb mb-3 mt-3 ms-auto">2
+            <ol class="breadcrumb mb-3 mt-3 ms-auto">
                 <li class="breadcrumb-item">
                     <a href="#" class="text-decoration-none">Dashboard</a>
                 </li>

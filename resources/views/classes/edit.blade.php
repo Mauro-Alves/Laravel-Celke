@@ -1,36 +1,67 @@
 @extends('layouts.admin')
 
 @section('content')
-    <h2>Editar Aula</h2>
+    <div class="container-fluid px-4">
+        <div class="mb-1 hstack gap-2">
+            <h2 class="mt-3">Aula</h2>
 
-    <a href="{{ route('classe.index', ['course' => $classe->course_id]) }}">
-        <button type="submit">Aulas</button></a> <br>
-    </a> <br><br>
+            <ol class="breadcrumb mb-3 mt-3 ms-auto">
+                <li class="breadcrumb-item">
+                    <a href="#" class="text-decoration-none">Dashboard</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a href="{{ route('course.show', ['course' => $classe->course_id]) }}" class="text-decoration-none">Curso</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a href="{{ route('classe.index', ['course' => $classe->course_id]) }}" class="text-decoration-none">Aulas</a>
+                </li>
+                <li class="breadcrumb-item active">Aula</li>
+            </ol>
+        </div>
 
-    <a href="{{ route('classe.show', ['classe' => $classe->id]) }}">
-        <button type="button">Visualizar</button>
-    </a><br><br>
+        <div class="card mb-4">
 
-    <x-alert />
+            <div class="card-header hstack gap-2">
+                <span>Editar</span>
 
-    <form action="{{ route('classe.update', ['classe' => $classe->id]) }}" method="POST">
-        @csrf
-        @method('PUT')
+                <span class="ms-auto d-sm-flex flex-row">
 
-        <label>Curso: </label>
+                    <a href="{{ route('classe.index', ['course' => $classe->course_id]) }}" class="btn btn-info btn-sm me-1 mb-1 mb-sm-0">Aulas</a>
 
-        <input type="text" name="name_course" id="name_course" value="{{ $classe->course->name }}" disabled required><br><br>
+                </span>
+            </div>
 
-        <label>Nome: </label>
+            <div class="card-body">
 
-        <input type="text" name="name" id="name" placeholder="Nome da Aula" value="{{ old('name', $classe->name) }}" required><br><br>
+                <x-alert />
 
-        <label>Descrição</label>
-        <textarea name="description" id="description" cols="30" rows="4" required>{{ old('description', $classe->description)}}</textarea><br><br>
+                <form class="row g-3" action="{{ route('classe.update', ['classe' => $classe->id ]) }}" method="POST">
+                    @csrf
+                    @method('PUT')
 
-        <button type="submit">Editar</button>
+                    <div class="col-12">
+                      <label for="name_course" class="form-label">Nome</label>
+                      <input type="text" name="name_course" class="form-control" id="name_course" placeholder="Nome do curso" value="{{ $classe->course->name }}" disabled required>
+                    </div>
 
+                    <div class="col-12">
+                      <label for="name" class="form-label">Nome</label>
+                      <input type="text" name="name" class="form-control" id="name" placeholder="Nome da aula" value="{{ old('name', $classe->name) }}" required>
+                    </div>
 
-    </form>
-    
+                    <div class="col-12">
+                      <label for="name" class="form-label">Descrição</label>
+                      <textarea name="description" rows="4" cols="30" id="description" class="form-control" placeholder="Conteúdo da aula" required>{{ old('description', $classe->description) }}</textarea>
+                    </div>
+
+                    <div class="col-12">
+                      <button type="submit" class="btn btn-warning btn-sm">Editar</button>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+
+    </div>
 @endsection
