@@ -121,6 +121,27 @@ php artisan make:component nome --view
 php artisan make:component alert --view
 ```
 
+Instalar o pacote de auditoria do Laravel
+```
+composer require owen-it/laravel-auditing
+```
+
+Publicar a configuração e as migration para auditoria
+```
+php artisan vendor:publish --provider "OwenIt\Auditing\AuditingServiceProvider" --tag="config"
+```
+```
+php artisan vendor:publish --provider "OwenIt\Auditing\AuditingServiceProvider" --tag="migrations"
+```
+
+Limpar cache de configuração
+```
+php artisan config:clear
+```
+
+Traduzir para português [Módulo de linguagem pt-BR](https://github.com/lucascudo/laravel-pt-BR-localization).
+
+
 ## Como usar o GitHub
 Baixar os arquivos do Git
 ```
