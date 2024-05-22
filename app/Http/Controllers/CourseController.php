@@ -19,7 +19,7 @@ class CourseController extends Controller
         // $courses = Course::paginate(10);
         $courses = Course::orderBy('name', 'ASC')
         
-        ->paginate(1);
+        ->paginate(10);
 
 
         // Salvar log

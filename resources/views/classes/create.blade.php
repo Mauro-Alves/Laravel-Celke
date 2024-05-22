@@ -13,13 +13,13 @@
                     <a href="{{ route('course.show', ['course' => $course->id]) }}" class="text-decoration-none">Curso</a>
                 </li>
                 <li class="breadcrumb-item">
-                    <a href="{{ route('classe.index', ['course' => $course->id]) }}" class="text-decoration-none">Aulas</a>
+                    <a href="{{ route('classe.index', ['course' => $course->id]) }}" class="text-decoration-none"><i class="fa-solid fa-list"></i> Aulas</a>
                 </li>
                 <li class="breadcrumb-item active">Aula</li>
             </ol>
         </div>
 
-        <div class="card mb-4">
+        <div class="card mb-4 border-light shadow">
 
             <div class="card-header hstack gap-2">
                 <span>Cadastrar</span>
