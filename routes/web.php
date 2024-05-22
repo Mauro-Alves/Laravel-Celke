@@ -2,11 +2,15 @@
 
 use App\Http\Controllers\ClasseController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
 });
+
+// Dashboard
+Route::GET('/index-dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
 
 // Cursos
 Route::GET('/index-course', [CourseController::class, 'index'])->name('course.index');
