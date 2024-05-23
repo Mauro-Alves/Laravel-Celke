@@ -1,0 +1,10 @@
+/* Importar o CSS dp layout */
+@import 'styles_sbadmin.css';
+
+
+/* Importar o CSS personalizar layout */
+@import 'styles_admin.css';
+
+
+/* Importar Font Awesome */
+@import '@fortawesome/fontawesome-free/css/all.css';
