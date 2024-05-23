@@ -24,7 +24,7 @@ class CourseRequest extends FormRequest
         return [
             'name' => 'required',
             // 'price' => 'required|numeric|max:8',
-            'price' => 'required|numeric',
+            'price' => 'required|max:10',
         ];
     }
     public function messages(): array
@@ -33,7 +33,6 @@ class CourseRequest extends FormRequest
         return [
             'name.required' => 'Campo Nome obrigatório!',
             'price.required' => 'Campo Preço obrigatório!',
-            'price.numeric' => 'O Preço só pode ter números!',
             'price.max' => 'O Preço só pode ter no máximo 8 digitos!',
         ];
     }
