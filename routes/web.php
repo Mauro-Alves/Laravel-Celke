@@ -3,14 +3,27 @@
 use App\Http\Controllers\ClasseController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+// Login
+Route::GET('/index-dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
 
 // Dashboard
-Route::GET('/index-dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
+Route::GET('/', [LoginController::class, 'index'])->name('login.index');
+
+// Usuários
+Route::get('/index-user', [UserController::class, 'index'])->name('user.index');          // Listar
+Route::get('/show-user/{user}', [UserController::class, 'show'])->name('user.show');      // Visualizar
+Route::get('/create-user', [UserController::class, 'create'])->name('user.create');       // Carregar o formulário
+Route::post('/store-user', [UserController::class, 'store'])->name('user.store');         // Receber os dados do formulário
+Route::get('/edit-user/{user}', [UserController::class, 'edit'])->name('user.edit');      // Carregar form editar
+Route::put('/update-user/{user}', [UserController::class, 'update'])->name('user.update');  // receber os dados do for editar
+Route::get('/edit-user-password/{user}', [UserController::class, 'editPassword'])->name('user.edit-password');  // Carregar form editar senha
+Route::put('/update-user-password/{user}', [UserController::class, 'updatePassword'])->name('user.update-password'); // Receber os dados do form editar senha
+Route::delete('/destroy-user/{user}', [UserController::class, 'destroy'])->name('user.destroy');    // Apagar usuário
 
 // Cursos
 Route::GET('/index-course', [CourseController::class, 'index'])->name('course.index');
