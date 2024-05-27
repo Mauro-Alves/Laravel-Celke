@@ -9,10 +9,11 @@ use Illuminate\Support\Facades\Route;
 
 
 // Login
-Route::GET('/index-dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
+Route::GET('/', [LoginController::class, 'index'])->name('login.index');
+Route::POST('/login', [LoginController::class, 'loginProcess'])->name('login.process');
 
 // Dashboard
-Route::GET('/', [LoginController::class, 'index'])->name('login.index');
+Route::GET('/index-dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
 
 // Usuários
 Route::get('/index-user', [UserController::class, 'index'])->name('user.index');          // Listar

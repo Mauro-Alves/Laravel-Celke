@@ -1,6 +1,7 @@
 @extends('layouts.login')
 
 @section('content')
+
     <div id="layoutAuthentication">
         <div id="layoutAuthentication_content">
 
@@ -13,10 +14,16 @@
                                     <h3 class="text-center font-weight-light my-4">Área Restrita</h3>
                                 </div>
                                 <div class="card-body">
-                                    <form>
+
+                                    <x-alert />
+
+                                    <form action="{{ route('login.process') }}" method="POST">
+                                        @csrf
+                                        @method('POST')
+
                                         <div class="form-floating mb-3">
                                             <input type="email" name="email" class="form-control" id="email"
-                                                placeholder="E-mail do usuário" />
+                                                placeholder="E-mail do usuário" value="{{ old('email') }}"/>
                                             <label for="email">Email</label>
                                         </div>
 
@@ -27,7 +34,7 @@
                                         </div>
 
                                         <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
-                                            <a class="small text-decoration-none" href="#">Esqueceu a senha?</a>
+                                            <a href="#" class="small text-decoration-none">Esqueceu a senha?</a>
                                             <button type="submit" class="btn btn-primary">Acessar</button>
                                         </div>
 
@@ -38,6 +45,12 @@
                                     <div class="small text-decoration-none">
                                         Precisa de uma conta? <a href="#"
                                             class="text-decoration-none">Inscrever-se!</a>
+                                    </div>
+
+                                    <div class="small">
+                                        <br>
+                                        Usuário: cesar@celke.com br <br>
+                                        Senha: 123456a</cesar@celke>
                                     </div>
                                 </div>
                             </div>
