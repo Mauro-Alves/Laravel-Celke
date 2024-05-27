@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Route;
 Route::GET('/', [LoginController::class, 'index'])->name('login.index');
 Route::POST('/login', [LoginController::class, 'loginProcess'])->name('login.process');
 Route::GET('/logout', [LoginController::class, 'destroy'])->name('login.destroy');
+Route::get('/create-user-login', [LoginController::class, 'create'])->name('login.create-user');
+Route::post('/store-user-login', [LoginController::class, 'store'])->name('login.store-user');
 
 // Rotas restrítas
 Route::group(['middleware' => 'auth'], function () {
