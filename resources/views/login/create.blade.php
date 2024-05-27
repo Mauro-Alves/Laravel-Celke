@@ -27,7 +27,7 @@
                     </div>
 
                     <div class="form-floating mb-3">
-                        <input type="password" name="password" class="form-control" id="Senha" placeholder="Password" />
+                        <input type="password" name="password" class="form-control" id="password" placeholder="Password" />
                         <label for="password">Senha</label>
                     </div>
 
@@ -40,7 +40,7 @@
 
             <div class="card-footer text-center py-3">
                 <div class="small text-decoration-none">
-                    <a href="{{ route('login.index') }}" class="text-decoration-none">Clique aqui para acessar.</a>
+                    <a href="{{ route('login.index') }}" class="text-decoration-none">Clique aqui</a> para acessar.
                 </div>
 
             </div>

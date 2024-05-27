@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\LoginUserRequest;
 use App\Models\User;
@@ -30,6 +29,7 @@ class LoginController extends Controller
         //Validar o usuário e a senha com as informações do banco de dados
         $authenticated = Auth::attempt(['email' => $request->email, 'password' => $request->password]);
 
+        // Verificar se o usuário foi autenticado
         if (!$authenticated) {
 
             //Redirecionar o usuário para a página anterior "login", enviar a mensagem de erro
