@@ -21,13 +21,13 @@
                     </div>
 
                     <div class="form-floating mb-3">
-                        <input type="password" name="password" class="form-control" id="Senha" placeholder="Password" />
+                        <input type="password" name="password" class="form-control" id="password" placeholder="Digite a senha" />
                         <label for="password">Senha</label>
                     </div>
 
                     <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
-                        <a href="#" class="small text-decoration-none">Esqueceu a senha?</a>
-                        <button type="submit" class="btn btn-primary">Acessar</button>
+                        <a href="{{ route('forgot-password.show') }}" class="small text-decoration-none">Esqueceu a senha?</a>
+                        <button type="submit" class="btn btn-primary btn-sm">Acessar</button>
                     </div>
 
                 </form>
