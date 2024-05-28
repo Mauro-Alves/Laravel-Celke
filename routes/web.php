@@ -21,6 +21,8 @@ Route::post('/store-user-login', [LoginController::class, 'store'])->name('login
 Route::get('/forgot-password', [ForgotPasswordController::class, 'showForgotPassword'])->name('forgot-password.show');
 Route::post('/forgot-password', [ForgotPasswordController::class, 'submitForgotPassword'])->name('forgot-password.submit');
 
+Route::get('/reset-password/{token}', [ForgotPasswordController::class, 'showResetPassword'])->name('password.reset');
+
 // Rotas restrítas
 Route::group(['middleware' => 'auth'], function () {
 
